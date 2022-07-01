@@ -7,15 +7,15 @@
 		
 		
 		<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-	<property name="driverClassName"
-		value="oracle.jdbc.driver.OracleDriver"></property>
-	<property name="jdbcUrl"
-		value="jdbc:oracle:thin:@localhost:1521:orcl"></property>
-		<!-- jdbctest.java 연결했던거 "jdbc:oracle:thin:@localhost:1521:orcl" -->
-	<property name="username" value="kona"></property>
-	<!-- Oracle 버전에 따라 계정명에 c##을 붙여주어야 하는 경우가 있습니다. -->
-	<property name="password" value="0700"></property>
+	<!-- <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property> -->
+		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
+		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:orcl"></property>
+			<!-- jdbctest.java 연결했던거 "jdbc:oracle:thin:@localhost:1521:orcl" -->
+		<property name="username" value="kona"></property>
+		<!-- Oracle 버전에 따라 계정명에 c##을 붙여주어야 하는 경우가 있습니다. -->
+		<property name="password" value="0700"></property>
 </bean>
+
 
 	<bean id="datasource" class="com.zaxxer.hikari.HikariDataSource"
 		destroy-method="close">
