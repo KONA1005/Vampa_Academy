@@ -23,7 +23,8 @@
 			let result = '<c:out value="${result}"/>';
 
 			checkAlert(result); // alret함수 만들고 호출해주기.
-
+ 
+			
 			function checkAlert(result) {
 					
 				if (result === '') {
