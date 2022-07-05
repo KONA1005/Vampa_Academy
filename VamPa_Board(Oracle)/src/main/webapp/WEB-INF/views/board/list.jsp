@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <!-- jstl 쓸거다 알려주는 코드 -->
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -16,26 +17,27 @@
 	<h1>목록페이지입니다.</h1>
 	<a href="/board/enroll">게시판 등록</a>
 	<script>
-$(document).ready(function(){
-    
-    let result = '<c:out value="${result}"/>';
-    
-    checkAlert(result);
-    
-    function checkAlert(result){
-        
-        if(result === ''){
-            reutrn;
-        }
-        
-        if(result === "enrol success"){
-            alert("등록이 완료되었습니다.");
-        }ㄴ
-        
-    }    
-    
-});
-</script>
+		
+		$(document).ready(function() {
+			// 넘겨준 result 받아오는거.
+			let result = '<c:out value="${result}"/>';
+
+			checkAlert(result); // alret함수 만들고 호출해주기.
+
+			function checkAlert(result) {
+					
+				if (result === '') {
+					reutrn;
+				}
+
+				if (result === "enrol success") {
+					alert("등록이 완료되었습니다.");
+				}
+
+			}
+
+		});
+	</script>
 
 
 </body>

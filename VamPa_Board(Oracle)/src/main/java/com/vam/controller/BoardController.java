@@ -48,7 +48,7 @@ public class BoardController {
 	/* 게시판 등록처리 */
 	  @PostMapping("/enroll")
 	    public String boardEnrollPOST(BoardVO board, RedirectAttributes rttr) {
-	        
+	        /* RedirectAttributes 에 addFlashAttribute함수는, 일회성으로만 데이터를 전달하기 위함 */
 	        log.info("BoardVO : " + board);
 	        
 	        bservice.enroll(board);
