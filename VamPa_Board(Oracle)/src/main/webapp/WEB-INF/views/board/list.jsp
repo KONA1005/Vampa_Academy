@@ -80,9 +80,12 @@
 					<td>
 						<!-- 목록페이지에서 제목 클릭했을 때 해당 조회페이지(get.jsp)
 							 페이지로 이동할 수 있도록 <a>태그 추가 -->
-						<a class="move" href='/board/get?bno=<c:out value="${list.bno}"/>'>
+						<%-- <a class="move" href='/board/get?bno=<c:out value="${list.bno}"/>'>
 	                        <c:out value="${list.title}"/>
-	                    </a>
+	                    </a> --%>
+	                    <a class="move" href='<c:out value="${list.bno}"/>'>
+					        <c:out value="${list.title}"/>
+					    </a>
 					</td>
 					<td><c:out value="${list.title}" /></td>
 					<td>
