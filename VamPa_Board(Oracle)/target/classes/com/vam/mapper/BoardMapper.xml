@@ -13,6 +13,18 @@
     <!-- enroll이라는 아이디를 가진 얘가 인터페이스의 enroll과 같이 때문에 자동으로 실행.
     	#은 동적으로 인자로 전달받은 dto의 getter함수를 자동으로 호출해서 매핑
     	#은 문법이다. mybatis의 문법 -->
+    	
+    	<!-- 게시판 목록 -->
+    <select id="getList" resultType="com.vam.model.BoardVO">
+        select * from vam_board
+    </select>
+ 
+ 	  <!-- 게시판 조회 -->
+    <select id="getPage" resultType="com.vam.model.BoardVO">
+    
+        select * from vam_board where bno = #{bno}
+    
+    </select>
  
  
  
