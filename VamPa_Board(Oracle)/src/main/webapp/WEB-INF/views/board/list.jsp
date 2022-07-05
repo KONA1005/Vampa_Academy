@@ -87,15 +87,7 @@
 					        <c:out value="${list.title}"/>
 					    </a>
 					</td>
-					<td><c:out value="${list.title}" /></td>
-					<td>
-					<!-- 앞서 추가한 <a>태그 'href'속성의 속성 값을 게시판 번호(bno) 값만 저장되도록 변경
-						 <body>태그 내부에 <form>태그 추가. 
-						 <form>태그엔 id속성, method속성(속성값 "get")을 추가. -->
-						<a class="move" href='<c:out value="${list.bno}"/>'> <c:out
-								value="${list.title}" />
-						</a>
-					</td>
+					<%-- <td><c:out value="${list.title}" /></td> --%>
 					<td><c:out value="${list.writer}" /></td>
 					<%-- <td><c:out value="${list.regdate}" /></td>
 					<td><c:out value="${list.updateDate}" /></td> --%>
@@ -105,6 +97,9 @@
 				</tr>
 			</c:forEach>
 		</table>
+		<!-- 앞서 추가한 <a>태그 'href'속성의 속성 값을 게시판 번호(bno) 값만 저장되도록 변경
+			<body>태그 내부에 <form>태그 추가. 
+			<form>태그엔 id속성, method속성(속성값 "get")을 추가. -->
 		<form id="moveForm" method="get">    
     	</form>
 </div>
