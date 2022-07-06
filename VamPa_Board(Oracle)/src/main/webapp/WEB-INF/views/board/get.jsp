@@ -91,6 +91,8 @@ textarea{
 	</div>
 	<form id="infoForm" action="/board/modify" method="get">
 		<input type="hidden" id="bno" name="bno" value='<c:out value="${pageInfo.bno}"/>'>
+		<input type="hidden" id="pageNum" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
+		<input type="hidden" id="amount" name="amount" value='<c:out value="${cri.amount}"/>'>
 	</form>
 	
 <!-- 버튼이 동작하도록 <script>태그와 JS코드를 작성 -->
@@ -107,6 +109,7 @@ textarea{
 		form.attr("action", "/board/modify");
 		form.submit();
 	});	
+	
 </script>	
 </body>
 </html>
