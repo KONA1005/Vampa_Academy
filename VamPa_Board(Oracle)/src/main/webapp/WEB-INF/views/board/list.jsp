@@ -14,48 +14,87 @@
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
   <style>
-  a{
-  	text-decoration : none;
-  }
-  table{
- 	border-collapse: collapse;
- 	width: 1000px;    
- 	margin-top : 20px;
- 	text-align: center;
-  }
-  td, th{
-  	border : 1px solid black;
-  	height: 50px;
-  }
-  th{
-  	font-size : 17px;
-  }
-  thead{
-  	font-weight: 700;
-  }
-  .table_wrap{
-  	margin : 50px 0 0 50px;
-  }
-  .bno_width{
-  	width: 12%;
-  }
-  .writer_width{
-  	width: 20%;
-  }
-  .regdate_width{
-  	width: 15%;
-  }
-  .updatedate_width{
-  	width: 15%;
-  }
-  .top_btn{
-  	font-size: 20px;
-    padding: 6px 12px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    font-weight: 600;
-  }
-  </style>
+a {
+	text-decoration: none;
+}
+
+table {
+	border-collapse: collapse;
+	width: 1000px;
+	margin-top: 20px;
+	text-align: center;
+}
+
+td, th {
+	border: 1px solid black;
+	height: 50px;
+}
+
+th {
+	font-size: 17px;
+}
+
+thead {
+	font-weight: 700;
+}
+
+.table_wrap {
+	margin: 50px 0 0 50px;
+}
+
+.bno_width {
+	width: 12%;
+}
+
+.writer_width {
+	width: 20%;
+}
+
+.regdate_width {
+	width: 15%;
+}
+
+.updatedate_width {
+	width: 15%;
+}
+
+.top_btn {
+	font-size: 20px;
+	padding: 6px 12px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	font-weight: 600;
+}
+
+.pageInfo {
+	list-style: none;
+	display: inline-block;
+	margin: 50px 0 0 100px;
+}
+
+.pageInfo li {
+	float: left;
+	font-size: 20px;
+	margin-left: 18px;
+	padding: 7px;
+	font-weight: 500;
+}
+
+a:link {
+	color: black;
+	text-decoration: none;
+}
+
+a:visited {
+	color: black;
+	text-decoration: none;
+}
+
+a:hover {
+	color: black;
+	text-decoration: underline;
+}
+</style>
 </head>
 <body>
 <h1>목록페이지입니다.</h1>
@@ -102,12 +141,23 @@
 	    <div class="pageInfo_wrap" >
 	        <div class="pageInfo_area">
 	        	<ul id="pageInfo" class="pageInfo">
+	        	
+	            <!-- 이전페이지 버튼 -->
+                <c:if test="${pageMaker.prev}">
+                    <li class="pageInfo_btn previous"><a href="${pageMaker.startPage-1}">Previous</a></li>
+                </c:if>
+                
 		        	<!-- 각 번호 페이지 버튼 -->
 		        	<!-- 시작은 컨트롤에서 넘어온 스타트페이지부터~ -->
 	                <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
 	                    <li class="pageInfo_btn"><a href="${num}">${num}</a></li>
 	                    <!-- 숫자를 보여주기만 하는게 아니라 눌러 선택할 수 있게 끔 -->
 	                </c:forEach>
+	                
+	                 <!-- 다음페이지 버튼 -->
+	                <c:if test="${pageMaker.next}">
+	                    <li class="pageInfo_btn next"><a href="${pageMaker.endPage + 1 }">Next</a></li>
+	                </c:if>   
  			    </ul>
 	        </div>
 	    </div>
