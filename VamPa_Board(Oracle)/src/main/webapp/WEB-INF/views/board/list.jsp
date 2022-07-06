@@ -97,10 +97,27 @@
 				</tr>
 			</c:forEach>
 		</table>
+		
+		<!-- 페이징 영역 -->
+	    <div class="pageInfo_wrap" >
+	        <div class="pageInfo_area">
+	        	<ul id="pageInfo" class="pageInfo">
+		        	<!-- 각 번호 페이지 버튼 -->
+		        	<!-- 시작은 컨트롤에서 넘어온 스타트페이지부터~ -->
+	                <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+	                    <li class="pageInfo_btn"><a href="${num}">${num}</a></li>
+	                    <!-- 숫자를 보여주기만 하는게 아니라 눌러 선택할 수 있게 끔 -->
+	                </c:forEach>
+ 			    </ul>
+	        </div>
+	    </div>
+		
 		<!-- 앞서 추가한 <a>태그 'href'속성의 속성 값을 게시판 번호(bno) 값만 저장되도록 변경
 			<body>태그 내부에 <form>태그 추가. 
 			<form>태그엔 id속성, method속성(속성값 "get")을 추가. -->
-		<form id="moveForm" method="get">    
+		<form id="moveForm" method="get">
+		      <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
+		      <input type="hidden" name="amount" value="${pageMaker.cri.amount }">     
     	</form>
 </div>
 
@@ -124,6 +141,10 @@
 			if(result === "modify success"){
 		        alert("수정이 완료되었습니다.");
 		    }
+			
+			if(result === "delete success"){
+	            alert("삭제가 완료되었습니다.");
+	        }
 
 		}
 
@@ -135,14 +156,20 @@
     $(".move").on("click", function(e){
         e.preventDefault();
         
+        // 비어있는 moveForm에 동적으로 hidden으로 
         moveForm.append("<input type='hidden' name='bno' value='"+ $(this).attr("href")+ "'>");
         moveForm.attr("action", "/board/get");
         moveForm.submit();
     });
  	/* javascript내용 : 클릭한<a>태그 기능 정지 => <form>태그 내부 bno값 저장하는 <input>태그 생성
  					=> <form>태그 action속성 추가 => <form>태그 내부 데이터 서버 전송 */
+ 	
+ 	/* 페이지 이동 번호'가 동작시키기 위해 JS코드 작업
+ 	   페이지번호(a태그) 클릭했을 때 동작하는 메소드 */				
+	$(".pageInfo a").on("click", function(e) {
 
+	});
+ 					
 </script>
-
 </body>
 </html>

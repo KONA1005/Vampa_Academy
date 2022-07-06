@@ -1,5 +1,7 @@
 package com.vam.mapper;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -9,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.vam.model.BoardVO;
+import com.vam.model.Criteria;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -74,5 +77,27 @@ public class BoardMapperTests {
         log.info("result : " +result);
         
     }
+    
+    /* 게시판 삭제 */
+    @Test
+    public void testDelete() {
+        
+        int result = mapper.delete(5);
+        log.info("result : " + result);
+        
+    }
+    
+
+    /* 게시판 목록(페이징 적용)테스트 */
+	 @Test
+	 public void testGetListPaging() {
+	     Criteria cri = new Criteria();
+	     cri.setPageNum(2);
+	     List list = mapper.getListPaging(cri);
+	     list.forEach(board -> log.info("" + board));
+	 }
+	 
+    
+    
 
 }
