@@ -164,10 +164,19 @@
  	/* javascript내용 : 클릭한<a>태그 기능 정지 => <form>태그 내부 bno값 저장하는 <input>태그 생성
  					=> <form>태그 action속성 추가 => <form>태그 내부 데이터 서버 전송 */
  	
+ 					
  	/* 페이지 이동 번호'가 동작시키기 위해 JS코드 작업
- 	   페이지번호(a태그) 클릭했을 때 동작하는 메소드 */				
+ 	   페이지번호(a태그) 클릭했을 때 동작하는 메소드 */	
+ //	  "a태그 동작 멈춤"  =>  "<form> 태그 내부 pageNum과 관련된 <input>태그의 vlaue 속성값을 클릭한 <a> 태그의 페이지 번호를 삽입"  =>   "<form>태그 action 속성 추가 및 '/board/list'을 속성값으로 추가"  
+ //	 =>   "<form>태그 서버 전송"
+ 	 
 	$(".pageInfo a").on("click", function(e) {
-
+	        e.preventDefault();
+	     // name이 pageNum인 input태그의 값에 걔의 href값으로 대입해라.
+	        moveForm.find("input[name='pageNum']").val($(this).attr("href"));
+	     
+	        moveForm.attr("action", "/board/list"); // action속성 추가
+	        moveForm.submit(); 
 	});
  					
 </script>

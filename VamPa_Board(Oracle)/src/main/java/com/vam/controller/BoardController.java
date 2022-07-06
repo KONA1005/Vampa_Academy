@@ -23,20 +23,13 @@ public class BoardController {
 	@Autowired
 	private BoardService bservice;
 
-	/*
-	 * 게시판 목록 페이지 접속
-	 * 
-	 * @GetMapping("/list") public void boardListGET(Model model) {
-	 * log.info("게시판 목록 페이지 진입"); model.addAttribute("list", bservice.getList()); }
-	 */
-	/*
-	 * public String boardListGET() { log.info("게시판 목록 페이지 진입"); return list; 와 같다
-	 * 위에 쟤랑
-	 */
-	/*
-	 * /WEB-INF/view/list.jsp 이놈을 통해서 접근. 리턴을 받은거~ }
-	 */
-
+	/*  게시판 목록 페이지 접속 */
+//	@GetMapping("/list") public void boardListGET(Model model) {
+//	 * log.info("게시판 목록 페이지 진입"); model.addAttribute("list", bservice.getList()); }
+//	public String boardListGET() { log.info("게시판 목록 페이지 진입");
+//	return list; 와 같다
+//  위에 쟤랑 /WEB-INF/view/list.jsp 이놈을 통해서 접근. 리턴을 받은거~
+	 
 	@GetMapping("/enroll")
 	public void boardEnrollGET() {
 
@@ -126,12 +119,12 @@ public class BoardController {
 	/* 게시판 목록 페이지 접속(페이징 적용) */
 	@GetMapping("/list")
 	public void boardListGET(Model model, Criteria cri) {
-		log.info("boardListGET");
+		log.info("게시판 목록 페이지 진입"); 
 		model.addAttribute("list", bservice.getListPaging(cri));
 		int total = bservice.getTotal();
 		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
 		model.addAttribute("pageMaker", pageMake);
-
+		// /WEB-INF/view/list.jsp 이놈을 통해서 접근. 리턴을 받은거~
 	}
 
 }
