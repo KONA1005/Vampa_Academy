@@ -54,7 +54,7 @@ textarea{
 </style>
 </head>
 <body>
-<h1>조회 페이지</h1>
+<h1>수정 페이지</h1>
 	<form id="modifyForm" action="/board/modify" method="post">
 <!-- 게시판 내용이 출력되는 부분의 경우, <input>,<textarea> 태그의 "value"속성에 
 서버로부터 전달받은 ${pageinfo} 객체에 담긴 데이터들을 속성 값으로 부여하여 페이지에 출력되도록.
@@ -65,11 +65,11 @@ textarea{
 	</div>
 	<div class="input_wrap">
 		<label>게시판 제목</label>
-		<input name="title" readonly="readonly" value='<c:out value="${pageInfo.title}"/>' >
+		<input name="title"  value='<c:out value="${pageInfo.title}"/>' >
 	</div>
 	<div class="input_wrap">
 		<label>게시판 내용</label>
-		<textarea rows="3" name="content" readonly="readonly"><c:out value="${pageInfo.content}"/></textarea>
+		<textarea rows="3" name="content" ><c:out value="${pageInfo.content}"/></textarea>
 	</div>
 	<div class="input_wrap">
 		<label>게시판 작성자</label>
