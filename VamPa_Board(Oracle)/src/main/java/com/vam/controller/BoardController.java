@@ -70,10 +70,10 @@ public class BoardController {
 	 * 호출하는 Service메소드(getPage())를 호출.
 	 */
 	@GetMapping("/modify")
-	public void boardModifyGET(int bno, Model model) {
+	public void boardModifyGET(int bno, Model model, Criteria cri) {
 
 		model.addAttribute("pageInfo", bservice.getPage(bno));
-
+		model.addAttribute("cri",cri);
 	}
 
 	/* 글 수정 */

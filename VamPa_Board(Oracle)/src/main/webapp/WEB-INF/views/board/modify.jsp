@@ -99,6 +99,8 @@ textarea{
 	</form>
 	<form id="infoForm" action="/board/modify" method="get">
 		<input type="hidden" id="bno" name="bno" value='<c:out value="${pageInfo.bno}"/>'>
+		<input type="hidden" name="pageNum" value="${cri.pageNum }">
+		<input type="hidden" name="amount" value="${cri.amount }">  
 	</form>
 	
 <!-- 버튼이 동작하도록 <script>태그와 JS코드를 작성  -->
