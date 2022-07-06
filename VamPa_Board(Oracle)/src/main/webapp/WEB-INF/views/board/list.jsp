@@ -94,6 +94,9 @@ a:hover {
 	color: black;
 	text-decoration: underline;
 }
+.active {
+	background-color: #9282CD;
+}
 </style>
 </head>
 <body>
@@ -150,7 +153,9 @@ a:hover {
 		        	<!-- 각 번호 페이지 버튼 -->
 		        	<!-- 시작은 컨트롤에서 넘어온 스타트페이지부터~ -->
 	                <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-	                    <li class="pageInfo_btn"><a href="${num}">${num}</a></li>
+	                    <!-- 아래 코드는 컨트롤러에서 전달된 페이지 번호가 현재 반복문을 돌다가
+	                    	 나온 페이지 번호이면 active라는 클래스 동적추가 -->
+	                    <li class="pageInfo_btn ${pageMaker.cri.pageNum == num ? "active":"" }"><a href="${num}">${num}</a></li>
 	                    <!-- 숫자를 보여주기만 하는게 아니라 눌러 선택할 수 있게 끔 -->
 	                </c:forEach>
 	                
