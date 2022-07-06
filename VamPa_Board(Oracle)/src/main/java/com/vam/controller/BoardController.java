@@ -66,5 +66,35 @@ public class BoardController {
 	        model.addAttribute("pageInfo", bservice.getPage(bno));
 	        
 	    }
+	    
+
+	    /* 수정 페이지 이동 */
+	    /* 조회 페이지 이동 메소드와 동일. 수정하고자 하는 게시판의 내용을 출력해야 하기 때문.
+	     * 따라서 int형 파라미터와 해당 게시판의 내용을 호출하는 Service메소드(getPage())를 호출.*/
+	    @GetMapping("/modify")
+	    public void boardModifyGET(int bno, Model model) {
+	        
+	        model.addAttribute("pageInfo", bservice.getPage(bno));
+	        
+	    }
+	    
+	    /* 페이지 수정 */
+	    /* 수정 기능 실행 후 리다이렉트 방식으로 리스트 페이지 이동시 데이터를 같이 전송하기 위해 
+	     * RedircAttributes 객체 파라미터로 부여.
+	     * 리스트페이지(list.jsp)이동시 수정이 완료되었음을 알리는 경고창 띄우기 위해
+	     * "mpdify success"스트링 데이터를 "result"속성 값에 저장하는
+	     * addFlashAttrivute()메소드 호출
+	     * 리턴타입 String. 리다이렉트(Redirect)방식으로 리스트 페이지 이동 하도록 작성. */
+	    @PostMapping("/modify")
+	    public String boardModifyPOST(BoardVO board, RedirectAttributes rttr) {
+	        
+	        bservice.modify(board);
+	        
+	        rttr.addFlashAttribute("result", "modify success");
+	        
+	        return "redirect:/board/list";
+	        
+	    }
+	 
 	 
 }
