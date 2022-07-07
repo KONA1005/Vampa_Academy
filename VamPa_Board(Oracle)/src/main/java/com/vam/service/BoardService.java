@@ -27,7 +27,7 @@ public interface BoardService {
     public List<BoardVO> getListPaging(Criteria cri);
     
     /* 게시글 총 갯수 */
-    public int getTotal();
+    public int getTotal(Criteria cri);
  
     
 }

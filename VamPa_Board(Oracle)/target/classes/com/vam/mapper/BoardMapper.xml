@@ -27,17 +27,25 @@
     </select>
     
     <!-- Oracle -->
-    <!-- 게시물 목록(페이징) -->
-    <!-- <![CDATA[ ]]>"는 xml 파일 내의 쿼리 중 부등호가 사용될 때 
-    	 해당 부등호를 태그로 인식하지 않도록 하기 위해서 사용. -->
+   <!-- 게시물 목록(페이징) -->
     <select id="getListPaging" resultType="com.vam.model.BoardVO">
     <![CDATA[
         select bno, title, content, writer, regdate, updatedate from(
                 select /*+INDEX_DESC(vam_board pk_board) */ rownum  as rn, bno, title, content, writer, regdate, updatedate
-                from vam_board where rownum <= #{pageNum} * #{amount}) 
+                from vam_board where rownum <= #{pageNum} * #{amount} 
+    ]]>
+		<if test="keyword != null">
+		<!-- ||없으면 oracle 오류. 문자열이라는 형식으로 전달하기 위해서 
+		자바에서 오라클에서 concat같은 기능을 하는 연산자||, or개념이 아님 -->
+			and title like '%'||#{keyword}||'%'
+		</if>
+   	 <![CDATA[
+           )
         where rn > (#{pageNum} -1) * #{amount}
     ]]>
-    </select>
+    
+</select>
+ 
     
      <!-- 게시판 수정 -->
     <update id="modify">
@@ -55,9 +63,10 @@
     
     <!-- 게시물 총 개숫 -->
     <select id="getTotal" resultType="int">
-    
         select count(*) from vam_board
-    
+        <if test="keyword != null">
+            where title like '%'||#{keyword}||'%'
+        </if>
     </select>
  	
  	

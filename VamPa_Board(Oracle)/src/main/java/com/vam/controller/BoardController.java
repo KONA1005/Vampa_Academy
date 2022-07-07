@@ -124,7 +124,7 @@ public class BoardController {
 		// Criteria에는 pageNum이 있고, get.jsp에는 bno가 있다.
 		log.info("게시판 목록 페이지 진입"); 
 		model.addAttribute("list", bservice.getListPaging(cri));
-		int total = bservice.getTotal();
+		int total = bservice.getTotal(cri);
 		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
 		model.addAttribute("pageMaker", pageMake);
 		// /WEB-INF/view/list.jsp 이놈을 통해서 접근. 리턴을 받은거~

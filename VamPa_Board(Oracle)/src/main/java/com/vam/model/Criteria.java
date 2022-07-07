@@ -1,5 +1,8 @@
 package com.vam.model;
 
+import lombok.Data;
+
+@Data
 public class Criteria {
 	
 	/* 현재 페이지 */
@@ -7,6 +10,9 @@ public class Criteria {
     
     /* 한 페이지 당 보여질 게시물 갯수 */
     private int amount;
+    
+    /* 검색키워드*/
+    private String keyword;
     
     /* 기본 생성자 -> 기본 세팅 : pageNum = 1, amount = 10 */
     public Criteria() {
@@ -23,26 +29,6 @@ public class Criteria {
         this.amount = amount;
     }
 
-	public int getPageNum() {
-		return pageNum;
-	}
-
-	public void setPageNum(int pageNum) {
-		this.pageNum = pageNum;
-	}
-
-	public int getAmount() {
-		return amount;
-	}
-
-	public void setAmount(int amount) {
-		this.amount = amount;
-	}
-
-	@Override
-	public String toString() {
-		return "Criteria [pageNum=" + pageNum + ", amount=" + amount + "]";
-	}
- 
+	 
 
 }

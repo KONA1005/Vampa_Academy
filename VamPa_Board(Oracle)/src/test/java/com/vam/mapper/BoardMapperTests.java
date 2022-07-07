@@ -96,6 +96,14 @@ public class BoardMapperTests {
 	     List list = mapper.getListPaging(cri);
 	     list.forEach(board -> log.info("" + board));
 	 }
+	 /*게시판 전체글의수 가져오기 테스트*/
+	 @Test
+	 public void testGetTotal() {
+		 Criteria cri = new Criteria();
+		 cri.setKeyword("mapper");
+		 int total = mapper.getTotal(cri);
+	 }
+	 
 	 
     
     
